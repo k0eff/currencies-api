@@ -1,0 +1,30 @@
+{
+  	apps: [{
+		name: 'currencies-api',
+		script: './api/index.js',
+		watch: ['currencies-api'],
+		exec_mode: 'fork',
+		env  : {
+			NODE_ENV: 'production',
+			OBLAK_ENV: 'production',
+		}
+  	}],
+  	deploy : {
+		stage : {
+			user : 'currencies-stage',
+			host : [{
+				host: '10.0.0.1',
+				port: '25105',
+			}],
+			ref  : 'origin/master',
+			repo : 'git@gitlab.org:tech/Currencies-api.git',
+			path : '/home/currencies-stage/app',
+      		'pre-setup': 'ssh-keyscan -t rsa gitlab.org >> ~/.ssh/known_hosts; npm install pm2 pino; ln -s node_modules/.bin bin',
+			'post-deploy' : 'npm install --production && npm run start',
+			env  : {
+				NODE_ENV: 'production',
+				OBLAK_ENV: 'production',
+			}
+		}
+  	}
+}

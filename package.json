@@ -1,0 +1,35 @@
+{
+  "name": "currencies",
+  "version": "0.0.1",
+  "description": "Currencies exchange rates",
+  "main": "./api/index.js",
+  "scripts": {
+    "setup": "pm2 deploy stage.ecosystem.json5 stage setup",
+    "deploy": "pm2 deploy stage.ecosystem.json5 stage",
+    "start": "pm2 startOrRestart stage.ecosystem.json5 --env production"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "break_infinity.js": "^1.2.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^1.12.1",
+    "dotenv": "^6.0.0",
+    "express": "^4.17.1",
+    "fast-json-stringify": "^2.2.9",
+    "moment": "^2.27.0",
+    "mongodb": "^3.5.9",
+    "pino": "^4.17.3",
+    "pm2": "^3.0.4",
+    "request": "^2.88.2",
+    "require-dir": "^1.2.0",
+    "unzip-stream": "^0.3.0",
+    "unzipper": "^0.10.11"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-ecollect-base": "^0.1.2-beta.1",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
